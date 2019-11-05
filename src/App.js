@@ -6,6 +6,7 @@ import WatchList from "./components/WatchList/WatchList";
 import "./App.css";
 import Signin from "./components/Signin/Signin";
 import Protect from "./components/Protect";
+import ProtectSignin from "./components/ProtectSignin";
 
 class App extends React.Component {
   state = {
@@ -32,7 +33,7 @@ class App extends React.Component {
             Component={WatchList}
             isLoggedIn={isLoggedIn}
           />
-          <Route
+          {/* <Route
             path="/signin"
             render={(props) => {
               return (
@@ -43,6 +44,12 @@ class App extends React.Component {
                 />
               );
             }}
+          /> */}
+          <ProtectSignin
+            path="/signin"
+            Component={Signin}
+            isLoggedIn={isLoggedIn}
+            handleSubmit={this.handleSubmit}
           />
         </BrowserRouter>
       </div>
