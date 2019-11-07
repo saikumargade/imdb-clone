@@ -7,48 +7,21 @@ import "./App.css";
 import Signin from "./components/Signin/Signin";
 import Protect from "./components/Protect";
 import ProtectSignin from "./components/ProtectSignin";
+import { connect } from "react-redux";
 
 class App extends React.Component {
-  state = {
-    isLoggedIn: false
-  };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("fhdsjkfh");
-    this.setState({
-      isLoggedIn: true
-    });
-    // console.log("clicked submit button");
-  };
   render() {
-    const { isLoggedIn } = this.state;
+    const { user } = this.props;
     return (
       <div className="App">
-        {/* <h1>Hello World!</h1> */}
         <BrowserRouter>
           <Navbar />
-          <Protect exact path="/" Component={Home} isLoggedIn={isLoggedIn} />
-          <Protect
-            path="/watchlist"
-            Component={WatchList}
-            isLoggedIn={isLoggedIn}
-          />
-          {/* <Route
-            path="/signin"
-            render={(props) => {
-              return (
-                <Signin
-                  {...props}
-                  handleSubmit={this.handleSubmit}
-                  isLoggedIn={isLoggedIn}
-                />
-              );
-            }}
-          /> */}
+          <Route exact path="/" component={Home} />
+          <Protect path="/watchlist" Component={WatchList} user={user} />
           <ProtectSignin
             path="/signin"
             Component={Signin}
-            isLoggedIn={isLoggedIn}
+            user={user}
             handleSubmit={this.handleSubmit}
           />
         </BrowserRouter>
@@ -57,4 +30,20 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log("State", state);
+  return {
+    user: state.user
+  };
+};
+export default connect(mapStateToProps)(App);
+
+// function connect(msp) {
+//   const extraProps = msp(state);
+
+//   const x = ({Component}) => {
+//     return <Component {...extraProps} dispatch={dispatch}/>
+//   }
+
+//   return x;
+// }

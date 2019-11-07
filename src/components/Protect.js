@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-export default function Protect({ Component, isLoggedIn, ...rest }) {
+export default function Protect({ Component, user, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) => {
         console.log("Props", props);
-        return isLoggedIn ? (
+        return user || localStorage.getItem("user") ? (
           <Component />
         ) : (
           <Redirect

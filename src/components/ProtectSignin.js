@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 export default function ProtectSignin({
   Component,
-  isLoggedIn,
+  user,
   handleSubmit,
   ...rest
 }) {
-  console.log(isLoggedIn);
+  console.log(user);
   return (
     <Route
       {...rest}
@@ -15,10 +15,10 @@ export default function ProtectSignin({
         const from = props.location.state
           ? props.location.state.from
           : undefined;
-        return isLoggedIn ? (
+        return user || localStorage.getItem("user") ? (
           <Redirect to={from ? from : "/"} />
         ) : (
-          <Component {...props} handleSubmit={handleSubmit} />
+          <Component {...props} handleSubmit={handleSubmit} user={user} />
         );
       }}
     />
