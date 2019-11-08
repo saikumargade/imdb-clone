@@ -9,22 +9,36 @@ import Protect from "./components/Protect";
 import ProtectSignin from "./components/ProtectSignin";
 import { connect } from "react-redux";
 
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+
 class App extends React.Component {
   render() {
     const { user } = this.props;
     return (
       <div className="App">
-        <BrowserRouter>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Protect path="/watchlist" Component={WatchList} user={user} />
-          <ProtectSignin
-            path="/signin"
-            Component={Signin}
-            user={user}
-            handleSubmit={this.handleSubmit}
-          />
-        </BrowserRouter>
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="md">
+            <Typography
+              component="div"
+              style={{ backgroundColor: "#cfe8fc", height: "100vh" }}
+            >
+              <BrowserRouter>
+                <Navbar />
+                <Route exact path="/" component={Home} />
+                <Protect path="/watchlist" Component={WatchList} user={user} />
+                <ProtectSignin
+                  path="/signin"
+                  Component={Signin}
+                  user={user}
+                  handleSubmit={this.handleSubmit}
+                />
+              </BrowserRouter>
+            </Typography>
+          </Container>
+        </React.Fragment>
       </div>
     );
   }

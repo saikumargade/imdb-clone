@@ -41,7 +41,6 @@ class Signin extends React.Component {
           />
           <input type="submit" value="Login" />
         </form>
-        <Link to="signup">Signup</Link>
       </div>
     );
   }
