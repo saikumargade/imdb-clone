@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Movies from "./components/Movies/Movies";
 
 class App extends React.Component {
   render() {
@@ -28,6 +29,7 @@ class App extends React.Component {
               <BrowserRouter>
                 <Navbar />
                 <Route exact path="/" component={Home} />
+                <Route exact path="/movies" component={Movies} />
                 <Protect path="/watchlist" Component={WatchList} user={user} />
                 <ProtectSignin
                   path="/signin"
