@@ -24,7 +24,11 @@ class App extends React.Component {
           <Container maxWidth="md">
             <Typography
               component="div"
-              style={{ backgroundColor: "#cfe8fc", height: "100vh" }}
+              style={{
+                backgroundColor: "#cfe8fc",
+                height: "auto",
+                paddingBottom: "30px"
+              }}
             >
               <BrowserRouter>
                 <Navbar />
