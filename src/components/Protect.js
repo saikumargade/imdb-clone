@@ -8,7 +8,7 @@ export default function Protect({ Component, user, ...rest }) {
       render={(props) => {
         console.log("Props", props);
         return user || localStorage.getItem("user") ? (
-          <Component />
+          <Component {...props} />
         ) : (
           <Redirect
             to={{

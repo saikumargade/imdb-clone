@@ -25,7 +25,8 @@ class App extends React.Component {
             <Typography
               component="div"
               style={{
-                backgroundColor: "#cfe8fc",
+                backgroundColor: "gray",
+                minHeight: "100vh",
                 height: "auto",
                 paddingBottom: "30px"
               }}

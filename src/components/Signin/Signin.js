@@ -5,9 +5,7 @@ import { logaction } from "../../actions/logaction";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
-// import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-// import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -78,17 +76,6 @@ class Signin extends React.Component {
           >
             Sign In
           </Button>
-          {/* <input
-            type="text"
-            onChange={this.handleName}
-            placeholder="username"
-          />
-          <input
-            type="text"
-            onChange={this.handlePassword}
-            placeholder="password"
-          />
-          <input type="submit" value="Login" /> */}
         </form>
       </div>
     );
